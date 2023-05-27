@@ -32,6 +32,24 @@ describe("divide", () => {
     expect(app.divide(10, 2)).toBe(5);
   });
   test("handle divide by 0", () => {
-    expect(app.divide(10, 0)).toBe(app.ERROR_DIVIDE_BY_0);
+    expect(app.divide(10, 0)).toBe(app.ERROR_CODES.ERROR_DIVIDE_BY_0);
+  });
+});
+
+describe("operate", () => {
+  test("add two numbers", () => {
+    expect(app.operate("+", 1, 2)).toBe(3);
+  });
+  test("subtract two numbers", () => {
+    expect(app.operate("-", 5, 3)).toBe(2);
+  });
+  test("divide two numbers", () => {
+    expect(app.operate("/", 15, 5)).toBe(3);
+  });
+  test("multiply two numbers", () => {
+    expect(app.operate("x", 2, 4)).toBe(8);
+  });
+  test("operation not supported", () => {
+    expect(app.operate("L", 2, 4)).toBe(app.ERROR_CODES.ERROR_OP_NOT_SUPPORTED);
   });
 });

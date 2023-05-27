@@ -1,8 +1,30 @@
-const ERROR_DIVIDE_BY_0 = "Excuse me! Dividing by 0 hurts :(";
+/** Store all global error codes */
+const ERROR_CODES = {
+  ERROR_DIVIDE_BY_0: "Excuse me! Dividing by 0 hurts :(",
+  ERROR_OP_NOT_SUPPORTED: "Operation not supported",
+};
 
-function helloWorld() {
-  console.log("Hello world");
-  return 0;
+let calcResult, calcNumber;
+
+/** Store all avaliable operations for calculator */
+const operations = {
+  "+": add,
+  "-": subtract,
+  x: multiply,
+  "/": divide,
+};
+
+/**
+ *
+ * @param {String} sign either (+, -, *, /)
+ * @param {*} a
+ * @param {*} b
+ * @returns
+ */
+function operate(sign, a, b) {
+  if (!(sign in operations)) return ERROR_CODES.ERROR_OP_NOT_SUPPORTED;
+
+  return operations[sign](a, b);
 }
 
 /**
@@ -43,17 +65,18 @@ function multiply(a, b) {
  */
 function divide(a, b) {
   //handle divide by 0.
-  if (b === 0) return ERROR_DIVIDE_BY_0;
+  if (b === 0) return ERROR_CODES.ERROR_DIVIDE_BY_0;
 
   return a / b;
 }
 
 try {
   module.exports = {
-    ERROR_DIVIDE_BY_0,
+    ERROR_CODES,
     add,
     subtract,
-    multiply,
     divide,
+    multiply,
+    operate,
   };
 } catch (error) {}
