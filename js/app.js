@@ -1,34 +1,37 @@
+/**
+ * Core app methods
+ */
+
 /** Store all global error codes */
 const ERROR_CODES = {
   ERROR_DIVIDE_BY_0: "Excuse me! Dividing by 0 hurts :(",
   ERROR_OP_NOT_SUPPORTED: "Operation not supported",
 };
 
-let calcResult, calcNumber;
-
-/** Store all avaliable operations for calculator */
+/** Store all available operations for calculator */
 const operations = {
   "+": add,
   "-": subtract,
   x: multiply,
   "/": divide,
+  "=": equals,
 };
 
 /**
  *
  * @param {String} sign either (+, -, *, /)
- * @param {*} a
- * @param {*} b
- * @returns
+ * @param {Number} a
+ * @param {Number} b
+ * @returns Result of applying sign on a & b
  */
 function operate(sign, a, b) {
   if (!(sign in operations)) return ERROR_CODES.ERROR_OP_NOT_SUPPORTED;
 
-  return operations[sign](a, b);
+  return operations[sign](Number(a), Number(b));
 }
 
 /**
- *
+ * Adds two numbers
  * @param {Number} a
  * @param {Number} b
  * @returns Number - result of a + b
@@ -38,7 +41,7 @@ function add(a, b) {
 }
 
 /**
- *
+ * Subtracts two numbers
  * @param {Number} a
  * @param {Number} b
  * @returns Number - result of a - b
@@ -48,7 +51,7 @@ function subtract(a, b) {
 }
 
 /**
- *
+ * Multiplies two numbers
  * @param {Number} a
  * @param {Number} b
  * @returns Number - result of a * b
@@ -58,7 +61,7 @@ function multiply(a, b) {
 }
 
 /**
- *
+ * Divides two numbers
  * @param {Number} a
  * @param {Number} b
  * @returns Number - result of a / b
@@ -68,6 +71,10 @@ function divide(a, b) {
   if (b === 0) return ERROR_CODES.ERROR_DIVIDE_BY_0;
 
   return a / b;
+}
+
+function equals(a, b) {
+  return a;
 }
 
 try {
