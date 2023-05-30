@@ -1,7 +1,7 @@
 {
   "name": "odin-project-calculator",
   "version": "1.0.0",
-  "description": "Our final project is going to combine everything you’ve learned so far: you’re going to make an on-screen calculator using JavaScript, HTML, and CSS.",
+  "description": "Our final project is going to combine everything you've learned so far: you’re going to make an on-screen calculator using JavaScript, HTML, and CSS.",
   "main": "index.js",
   "scripts": {
     "test": "jest"
