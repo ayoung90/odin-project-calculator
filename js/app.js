@@ -18,7 +18,7 @@ const operations = {
 };
 
 /**
- *
+ * Applies an operation to two numbers
  * @param {String} sign either (+, -, *, /)
  * @param {Number} a
  * @param {Number} b
@@ -77,6 +77,8 @@ function equals(a, b) {
   return a;
 }
 
+// handle any browser errors raised by module export
+// exports used in unit tests
 try {
   module.exports = {
     ERROR_CODES,
